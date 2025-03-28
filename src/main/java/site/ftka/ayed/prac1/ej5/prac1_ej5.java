@@ -47,6 +47,10 @@ import java.util.OptionalInt;
 
 public class prac1_ej5 {
 
+	public static void main(String[] args) {
+
+	}
+
 	public prac1ej5_Tupla ejerA(int[] array) {
 		int min = Integer.MAX_VALUE;
 		int max = Integer.MIN_VALUE;

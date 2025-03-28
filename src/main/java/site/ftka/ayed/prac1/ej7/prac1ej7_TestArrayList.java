@@ -44,7 +44,6 @@ public class prac1ej7_TestArrayList {
 	c. ¿Existen otras alternativas para recorrer los elementos
 		de la lista del punto 7a.?
  */
-	// For index, For non-index, While index...
-
-
+	// For indexado, For no indexado, While indexado, método .forEach
+	// Stream API, Iterator, ListIterator, Spliterator...
 }
