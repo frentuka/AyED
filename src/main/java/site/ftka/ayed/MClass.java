@@ -13,12 +13,11 @@ package site.ftka.ayed;
 		c. Devuelva lo pedido sin usar parámetros ni la sentencia "return".
  */
 
-
-import site.ftka.ayed.prac1.ej5.prac1ej5_Tupla;
-
 public class MClass {
 
 	public static void main(String[] args) {
+
+
 
 	}
 
