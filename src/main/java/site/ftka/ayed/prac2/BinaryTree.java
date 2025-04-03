@@ -86,16 +86,16 @@ public class BinaryTree<T> {
 
         if (n > 0) {
             if (hasLeftChild())
-                leftChild.betweenLevels(n-1, m-1);
+                this.leftChild.betweenLevels(n-1, m-1);
             if (hasRightChild())
-                rightChild.betweenLevels(n-1, m-1);
+                this.rightChild.betweenLevels(n-1, m-1);
         } else if (m >= 0) {
             System.out.println(this);
 
             if (hasLeftChild())
-                leftChild.betweenLevels(0, m-1);
+                this.leftChild.betweenLevels(0, m-1);
             if (hasRightChild())
-                rightChild.betweenLevels(0, m-1);
+                this.rightChild.betweenLevels(0, m-1);
         }
     }
 
