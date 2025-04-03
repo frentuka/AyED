@@ -64,6 +64,11 @@ public class prac1ej7 {
 //		invertirArrayList(list);
 //		System.out.println(list);
 
+		// i.
+//		LinkedList<Integer> lista = new LinkedList<>(List.of(1, 2, 3, 4, 5));
+//		System.out.println(sumarLinkedList_sinPerdida(lista));
+//		System.out.println(sumarLinkedList(lista));
+
 		// j.
 //		ArrayList<Integer> list1 = new ArrayList<>(List.of(1, 3, 5));
 //		ArrayList<Integer> list2 = new ArrayList<>(List.of(2, 3, 4, 5, 6));
@@ -144,37 +149,39 @@ public class prac1ej7 {
 	public List<Integer> calcularSucesion(int n) {
 		List<Integer> sucesion = new ArrayList<>();
 
-		while (n != 1) {
+		if (n != 1) {
+			if (n % 2 == 0) n = n / 2;
+			else n = 3 * n + 1;
 			sucesion.add(n);
-
-			if (n % 2 == 0)
-				n = n / 2;
-			else
-				n = 3*n+1;
+			sucesion.addAll(calcularSucesion(n));
 		}
 
-		sucesion.add(n);
 		return sucesion;
 	}
 
 	// h. Implemente un método recursivo que invierta el orden de los elementos en un ArrayList.
 	public static void invertirArrayList(ArrayList<Integer> arrayList) {
-		for (int i = 0; i < arrayList.size()/2; i++) {
-			int aux = arrayList.get(i);
-
-			arrayList.set(i, arrayList.get(arrayList.size() - i - 1));
-			arrayList.set(arrayList.size() - i - 1, aux);
+		if (!arrayList.isEmpty()) {
+			int elem = arrayList.removeFirst();
+			invertirArrayList(arrayList);
+			arrayList.add(elem);
 		}
 	}
 
 	// i. Implemente un método recursivo que calcule la suma de los elementos en un LinkedList.
 	public static int sumarLinkedList(LinkedList<Integer> lista) {
+		if (!lista.isEmpty())
+			return lista.removeFirst() + sumarLinkedList(lista);
+		else return 0;
+	}
+
+	public static int sumarLinkedList_sinPerdida(LinkedList<Integer> lista) {
 		int suma = 0;
-
-		for (int num: lista) {
-			suma+= num;
+		if (!lista.isEmpty()) {
+			int act = lista.removeFirst();
+			suma = act + sumarLinkedList(lista);
+			lista.addFirst(act);
 		}
-
 		return suma;
 	}
 
