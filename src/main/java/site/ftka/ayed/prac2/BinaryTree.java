@@ -112,22 +112,26 @@ public class BinaryTree<T> {
         if (this.isLeaf())
             return spacing + data;
 
-        int dataLength = getData().toString().length();
+        int dataLength = 0;
+        try {
+            dataLength = getData().toString().length();
+        } catch (NullPointerException ignored) { }
+
         String dataLengthSpacing = " ".repeat(dataLength-1);
 
         String upperSpacing = spacing + (sonstat == SON_STATUS.DOWN ? "║   " : "    ") + dataLengthSpacing;
         String downSpacing = spacing + (sonstat == SON_STATUS.UP ? "║   " : "    ") + dataLengthSpacing;
 
         if (this.hasLeftChild() && this.hasRightChild())
-            return this.getLeftChild().toString(upperSpacing, SON_STATUS.UP) + "\n" +
+            return this.getRightChild().toString(downSpacing, SON_STATUS.DOWN) + "\n" +
                    spacing + data + " ══╣\n" +
-                   this.getRightChild().toString(downSpacing, SON_STATUS.DOWN);
+                    this.getLeftChild().toString(upperSpacing, SON_STATUS.UP);
         if (this.hasLeftChild() && !this.hasRightChild())
-            return this.getLeftChild().toString(upperSpacing, SON_STATUS.UP) + "\n" +
-                   spacing + data + " ══╝";
-        if (!this.hasLeftChild() && this.hasRightChild())
             return spacing + data + " ══╗\n" +
-                   this.getRightChild().toString(downSpacing, SON_STATUS.DOWN);
+                    this.getRightChild().toString(downSpacing, SON_STATUS.DOWN);
+        if (!this.hasLeftChild() && this.hasRightChild())
+            return this.getLeftChild().toString(upperSpacing, SON_STATUS.UP) + "\n" +
+                    spacing + data + " ══╝";
 
         return "" + data;
     }

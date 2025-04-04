@@ -38,7 +38,7 @@ class Queue<T> extends Sequence {
         size++;
     }
 
-    /** ● dequeue():T Elimina el elemento del frente de la cola y lo retorna. */
+    /** ● dequeue(): T Elimina el elemento del frente de la cola y lo retorna. */
     public T dequeue() {
         size--;
         return data.removeFirst();
