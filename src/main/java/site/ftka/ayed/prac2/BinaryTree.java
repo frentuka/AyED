@@ -101,6 +101,34 @@ public class BinaryTree<T> {
 
     @Override
     public String toString() {
-        return "BinaryTree data: " + data;
+        return toString("", SON_STATUS.NONE);
+    }
+
+    private enum SON_STATUS {
+        NONE, UP, DOWN;
+    }
+
+    public String toString(String spacing, SON_STATUS sonstat) {
+        if (this.isLeaf())
+            return spacing + data;
+
+        int dataLength = getData().toString().length();
+        String dataLengthSpacing = " ".repeat(dataLength-1);
+
+        String upperSpacing = spacing + (sonstat == SON_STATUS.DOWN ? "║   " : "    ") + dataLengthSpacing;
+        String downSpacing = spacing + (sonstat == SON_STATUS.UP ? "║   " : "    ") + dataLengthSpacing;
+
+        if (this.hasLeftChild() && this.hasRightChild())
+            return this.getRightChild().toString(upperSpacing, SON_STATUS.UP) + "\n" +
+                    spacing + data + " ══╣\n" +
+                    this.getLeftChild().toString(downSpacing, SON_STATUS.DOWN);
+        if (!this.hasLeftChild() && this.hasRightChild())
+            return this.getRightChild().toString(upperSpacing, SON_STATUS.UP) + "\n" +
+                    spacing + data + " ══╝";
+        if (this.hasLeftChild() && !this.hasRightChild())
+            return spacing + data + " ══╗\n" +
+                    this.getLeftChild().toString(downSpacing, SON_STATUS.DOWN);
+
+        return "" + data;
     }
 }

@@ -1,4 +1,6 @@
-package site.ftka.ayed.prac1.ej8;
+package site.ftka.ayed.prac2.ej7;
+
+import site.ftka.ayed.prac1.ej8.Sequence;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.List;
         ● toString(): String Retorna los elementos de la cola en un String
      */
 
-class Queue<T> extends Sequence {
+class Queue<T> {
 
     private final List<T> data;
     private int size = 0;
@@ -50,13 +52,11 @@ class Queue<T> extends Sequence {
     }
 
     /** ● isEmpty(): boolean Retorna verdadero si la cola no tiene elementos y falso en caso contrario */
-    @Override
     boolean isEmpty() {
         return size == 0;
     }
 
     /** ● size():int Retorna la cantidad de elementos de la cola. */
-    @Override
     public int size() {
         return size;
     }
