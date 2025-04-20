@@ -1,11 +1,13 @@
-package site.ftka.ayed.prac2;
+package site.ftka.ayed.prac3;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GeneralTree<T> {
 
     private T data;
-    private List<GeneralTree<T>> children;
+    private List<GeneralTree<T>> children = new ArrayList<>();
 
     public GeneralTree(T data) {
         this.data = data;
