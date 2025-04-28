@@ -69,37 +69,39 @@ public class prac3ej10 {
 	}
 
 	public static List<Integer> resolver(GeneralTree<Integer> arbol) {
-		return resolver(arbol, new ArrayList<>());
+		List<Integer> maxPath = new ArrayList<>();
+		List<Integer> currentPath = new ArrayList<>();
+		int[] maxValue = new int[]{Integer.MIN_VALUE};
+
+		resolver(arbol, 0, 0, currentPath, maxPath, maxValue);
+		return maxPath;
 	}
 
-	private static List<Integer> resolver(GeneralTree<Integer> arbol, List<Integer> caminoActual) {
-		if (arbol.isLeaf())
-			return List.of(arbol.getData());
+	private static void resolver(GeneralTree<Integer> tree, int level,
+	                             int currentSum, List<Integer> currentPath,
+	                             List<Integer> maxPath, int[] maxValue) {
 
-		List<Integer> best_found_path = List.of();
-		int best_found_path_value = Integer.MIN_VALUE;
+		int data = tree.getData();
+		if (data != 0) {
+			currentPath.add(data);
+			currentSum += data * level;
+		}
 
-		for (GeneralTree<Integer> child : arbol.getChildren()) {
-			List<Integer> child_best_path = resolver(child, caminoActual);
-			int path_value = calcularCamino(child_best_path);
-
-			if (path_value > best_found_path_value) {
-				best_found_path_value = path_value;
-				best_found_path = child_best_path;
+		if (tree.isLeaf()) {
+			if (currentSum > maxValue[0]) {
+				maxValue[0] = currentSum;
+				maxPath.clear();
+				maxPath.addAll(currentPath);
 			}
+
+			if (data != 0) currentPath.removeLast();
+			return;
 		}
 
+		for (GeneralTree<Integer> child : tree.getChildren())
+			resolver(child, level + 1, currentSum, currentPath, maxPath, maxValue);
 
-
-		return caminoActual;
-	}
-
-	private static int calcularCamino(List<Integer> camino) {
-		int res = 0;
-		for (int i = 0; i < camino.size(); i++) {
-			res+= i * camino.get(i);
-		}
-		return res;
+		if (data != 0) currentPath.removeLast();
 	}
 
 }
