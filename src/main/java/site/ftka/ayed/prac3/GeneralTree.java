@@ -18,6 +18,10 @@ public class GeneralTree<T> {
         this.children = children;
     }
 
+    public GeneralTree() {
+
+    }
+
     public T getData() {
         return data;
     }
