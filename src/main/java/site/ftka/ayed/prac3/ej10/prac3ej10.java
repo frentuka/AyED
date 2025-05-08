@@ -65,6 +65,7 @@ public class prac3ej10 {
 		tree_3_1_1.addChild(tree_3_1_1_1);
 		tree_3_1_1.addChild(tree_3_1_1_2);
 
+		System.out.println(tree);
 		System.out.println(resolver(tree));
 	}
 
