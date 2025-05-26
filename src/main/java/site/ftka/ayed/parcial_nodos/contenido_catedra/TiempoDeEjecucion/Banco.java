@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Banco {
 	 
-	static final int CANTIDAD_CUENTAS   = 1000;
+	static final int CANTIDAD_CUENTAS   = 100000;
 	static final int CANTIDAD_CONSULTAS = CANTIDAD_CUENTAS;
 	
 	/*

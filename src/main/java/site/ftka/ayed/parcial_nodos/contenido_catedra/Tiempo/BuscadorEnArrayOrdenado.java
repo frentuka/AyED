@@ -1,3 +1,5 @@
+package site.ftka.ayed.parcial_nodos.contenido_catedra.Tiempo;
+
 public class BuscadorEnArrayOrdenado {
 
 	private static class Resultado {
@@ -71,14 +73,14 @@ public class BuscadorEnArrayOrdenado {
 	}
 
 	public static void main(String[] args) {
-		int cantidadElementos = 200000;
+		int cantidadElementos = 600000;
 
 		int[] datos = initArrayOrdenado(cantidadElementos);
 
-		Resultado res = buscarlineal("Busqueda lineal valor:" + cantidadElementos, datos, cantidadElementos);
+		Resultado res = buscarlineal("Busqueda lineal valor:\n" + cantidadElementos, datos, cantidadElementos);
 		System.out.println(res);
 
-		res = buscarDicotomico("Busqueda dicotomica valor:" + cantidadElementos, datos, cantidadElementos);
+		res = buscarDicotomico("Busqueda dicotomica valor:\n" + cantidadElementos, datos, cantidadElementos);
 		System.out.println(res);
 	}
 
